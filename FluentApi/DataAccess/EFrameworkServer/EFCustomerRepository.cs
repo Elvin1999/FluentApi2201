@@ -3,6 +3,7 @@ using FluentApi.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,11 @@ namespace FluentApi.DataAccess.EFrameworkServer
 
         public void DeleteData(Customer data)
         {
-            throw new NotImplementedException();
+            using (var context = new MyContext())
+            {
+                context.Entry(data).State = EntityState.Deleted;
+                context.SaveChanges();
+            }
         }
 
         public ObservableCollection<Customer> GetAllData()
@@ -46,7 +51,11 @@ namespace FluentApi.DataAccess.EFrameworkServer
 
         public void UpdateData(Customer data)
         {
-            throw new NotImplementedException();
+            using (var context = new MyContext())
+            {
+                context.Entry(data).State = EntityState.Modified;
+                context.SaveChanges();
+            }
         }
     }
 }

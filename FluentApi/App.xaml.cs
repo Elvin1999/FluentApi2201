@@ -54,22 +54,25 @@ namespace FluentApi
             {
                 var o1 = new Order
                 {
-                    CustomerId = 1,
-                    OrderDate = DateTime.Now.AddDays(-3)
+                    CustomerId = 15,
+                    OrderDate = DateTime.Now.AddDays(-3),
+                    Imagepath= "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg"
                 };
                 var o2 = new Order
                 {
-                    CustomerId = 1,
-                    OrderDate = DateTime.Now.AddDays(-5)
+                    CustomerId = 15,
+                    OrderDate = DateTime.Now.AddDays(-5),
+                    Imagepath= "https://www.notebookcheck.net/uploads/tx_nbc2/SamsungGalaxyA32.jpg"
                 };
                 var o3 = new Order
                 {
-                    CustomerId = 2,
-                    OrderDate = DateTime.Now.AddDays(-7)
+                    CustomerId = 14,
+                    OrderDate = DateTime.Now.AddDays(-7),
+                   
                 };
                 var o4 = new Order
                 {
-                    CustomerId = 2,
+                    CustomerId = 14,
                     OrderDate = DateTime.Now.AddDays(-10)
                 };
                 DB.OrderRepository.AddData(o1);

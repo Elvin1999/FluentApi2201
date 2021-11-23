@@ -49,28 +49,93 @@
                 </ListView.View>
             </ListView>
             <ListView ItemsSource="{Binding AllOrders}" Background="SpringGreen" Width="300" >
-               
+                <ie:Interaction.Triggers>
+                    <ie:EventTrigger EventName="SelectionChanged">
+                        <ie:InvokeCommandAction Command="{Binding SelectOrderCommand}"  CommandParameter="{Binding ElementName=myListBox, Path=SelectedItem}"/>
+                    </ie:EventTrigger>
+                </ie:Interaction.Triggers>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Customer Company Name" Width="100"  >
+                        <GridViewColumn Header="Customer Company Name" Width="80"  >
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Padding="5,0" Text="{Binding Customer.CompanyName}" ></TextBlock>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Order Date" Width="100"  >
+                        <GridViewColumn Header="Order Date" Width="80"  >
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Padding="5,0" Text="{Binding OrderDate}" ></TextBlock>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        
-                       
+                        <GridViewColumn Header="Image" Width="100"  >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Width="100" Height="100" Source="{Binding Imagepath}" ></Image>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
                     </GridView>
                 </ListView.View>
             </ListView>
+        </StackPanel>
+        <StackPanel
+            Orientation="Horizontal"
+            Background="DeepSkyBlue"
+            Height="350"
+            >
+            <StackPanel Width="400">
+                <TextBlock FontWeight="DemiBold" FontSize="22" Text="Contact Name">
+                </TextBlock >
+                <TextBox Text="{Binding Customer.ContactName}" FontSize="22">
+                </TextBox>
+                <TextBlock FontWeight="DemiBold"
+                           FontSize="22" Text="Company Name">
+                </TextBlock >
+                <TextBox Text="{Binding Customer.CompanyName}" FontSize="22">
+                </TextBox>
+                <TextBlock FontWeight="DemiBold"
+                           FontSize="22" Text="City">
+                </TextBlock >
+                <TextBox Text="{Binding Customer.City}" FontSize="22">
+                </TextBox>
+                <TextBlock FontWeight="DemiBold"
+                           FontSize="22" Text="Country">
+                </TextBlock >
+                <TextBox Text="{Binding Customer.Country}" FontSize="22">
+                </TextBox>
+                
+                <Button
+                    Content="Add Customer" 
+                    Command="{Binding AddCommand}" 
+                    Margin="0,5,0,0"/>
+                <Button
+                    Content="Update Customer" 
+                    Command="{Binding UpdateCommand}" 
+                    Margin="0,5,0,0"/> 
+                <Button
+                    Content="Clear" 
+                    Command="{Binding ResetCommand}" 
+                    Margin="0,5,0,0"/>
+            </StackPanel>
+            <StackPanel
+                >
+                <Button
+                    Content="Delete Customer" 
+                    Command="{Binding DeleteCustomerCommand}" 
+                    Margin="0,5,0,0"/> 
+                <Button
+                    Content="Order Now" 
+                    Command="{Binding OrderNowCommand}" 
+                    Margin="0,5,0,0"/>
+                <Button
+                    Content="DELETE Order" 
+                    Command="{Binding DeleteOrderCommand}" 
+                    Margin="0,5,0,0"/>
+            </StackPanel>
         </StackPanel>
     </StackPanel>
 </Window>
